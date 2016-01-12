@@ -1,0 +1,61 @@
+<!<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Youtube autoplay on scroll</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+	<link rel="author" href="humans.txt">
+</head>
+<body>
+	<script>
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	</script>
+	<div class="container" style="margin-top: 100px">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 style="margin-top: 100px;">Example video</h3>
+				<div class="youtube-element" style="">
+					<div class="youtube-video" data-video-height="110" data-autoplay="1" data-video-id="M7lc1UVf-VE">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 1000px;">
+			<div class="col-md-12">
+
+				<div class="youtube-element" style="">
+					<div class="youtube-video" data-video-height="220" data-autoplay="1" data-video-id="M7lc1UVf-VE">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 1000px;">
+			<div class="col-md-12">
+				<h3 style="margin-top: 100px;">Example video</h3>
+
+				<div class="youtube-element" style="">
+					<div class="youtube-video" data-video-height="400"   data-autoplay="1" data-video-id="M7lc1UVf-VE">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 1000px;">
+			<div class="col-md-12">
+				<h3 style="margin-top: 100px;">Example video</h3>
+
+				<div class="youtube-element" style="">
+					<div class="youtube-video" data-video-height="400"  data-autoplay="1" data-video-id="M7lc1UVf-VE">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
