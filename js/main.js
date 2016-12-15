@@ -34,6 +34,7 @@ window.onYouTubeIframeAPIReady = function() {
             height: getHeight,
             width: '100%',
             videoId: getYtID,
+	    playerVars: { 'autoplay': 1, 'controls': 0, 'rel': 0, 'showinfo': 0, 'loop': 1, 'modestbranding': 1 },
             events: {
             'onStateChange': onPlayerStateChange
             }
@@ -52,7 +53,8 @@ window.onYouTubeIframeAPIReady = function() {
                             players[i].playVideo();
                             players[i].mute();
                         }else{
-                            players[i].stopVideo();
+                            //players[i].stopVideo();
+                            players[i].pauseVideo();
                         }
                     });
                 }
@@ -78,7 +80,7 @@ function createPlayer(playerInfo) {
 
 function onPlayerStateChange(event) {
     if(event.data === 2){
-        pausedVideo = event.target.f.id;
+        pausedVideo = event.target.a.id;
     }
     if(event.data === 1){
         pausedVideo =  "";
