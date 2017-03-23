@@ -1,4 +1,3 @@
-console.log("he");
 var playingVideo = false;
 var done = false;
 var iterator = 0;
@@ -34,8 +33,8 @@ window.onYouTubeIframeAPIReady = function() {
             height: getHeight,
             width: '100%',
             videoId: getYtID,
-	    playerVars: { 'autoplay': 1, 'controls': 0, 'rel': 0, 'showinfo': 0, 'loop': 1, 'modestbranding': 1 },
             events: {
+            'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
             }
         }));
@@ -68,14 +67,34 @@ window.onYouTubeIframeAPIReady = function() {
 }
 var players = new Array();
 function createPlayer(playerInfo) {
+    // Uncomment to play the first video if it is already in the viewport. This is different from data-autoplay!
+    /*
+    if(playerInfo.id.slice(-1)=='1')
+        playerVars = { 'autoplay': 1, 'controls': 0, 'rel': 0, 'showinfo': 0, 'loop': 1, 'modestbranding': 1 };
+    else
+        playerVars = { 'autoplay': 0, 'controls': 0, 'rel': 0, 'showinfo': 0, 'loop': 1, 'modestbranding': 1 };
+    */
+
+    playerVars = { 'autoplay': 0, 'controls': 0, 'rel': 0, 'showinfo': 0, 'loop': 1, 'modestbranding': 1 };
+
     return new YT.Player(playerInfo.id, {
         height: playerInfo.height,
         width: playerInfo.width,
         videoId: playerInfo.videoId,
+        playerVars,
         events: {
+            'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
             }
     });
+}
+
+function onPlayerReady(event) {
+    // Play/pause video's which do not auto play for seamless playback
+    if(event.target.a.src.search('autoplay=0')) {
+        event.target.playVideo();
+        event.target.pauseVideo();
+    }
 }
 
 function onPlayerStateChange(event) {
@@ -91,7 +110,7 @@ function onPlayerStateChange(event) {
 }
 
 function isElementInViewport(el) {
-    if (typeof jQuery === "function" && el instanceof jQuery) { 
+    if (typeof jQuery === "function" && el instanceof jQuery) {
     // since im using jquery
         el = el[0];
     }
